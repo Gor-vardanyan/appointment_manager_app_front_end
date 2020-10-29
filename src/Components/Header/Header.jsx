@@ -6,7 +6,7 @@ import './Header.scss';
 //     constructor(props){
 //         super(props)
 //         this.state = {
-//             Header
+//             user
 //         }
 //     }
 // }
@@ -25,17 +25,15 @@ const Header = ({user,setUser}) => {
             setUser(null)
         }
     return (
-        <header className="header">
+        <header className="header margin_1">
             <Link to ="/" >Home</Link>
             {user ?
                 <div className="loggedIn">
-                {['admin','Dios'].includes(user.role) &&<Link to="/users">users</Link> }
-                    <Link to="/profile">{user.email} - {user.role}</Link>
                     <span className="logout" onClick={logout}>Logout</span>
                 </div> :
-                <div className="notLoggedIn">
+                <div className="notLoggedIn margin_1">
                     <Link to="/client/logInClient">Login</Link>
-                    <Link to="/client/registerClients">Registro</Link>
+                    <Link to="/client/registerClients">Register</Link>
                 </div>}
 
         </header>
