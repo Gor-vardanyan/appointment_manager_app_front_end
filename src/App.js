@@ -11,11 +11,10 @@ import Register from './containers/Register/Register';
 import axios from 'axios';
 
 function App() {
-console.log(process.env.APP_URL);
 const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
 useEffect(() => {
   const token = localStorage.getItem('authToken')
-  axios.get(process.env.APP_URL + '/client/logInClient',
+  axios.get('localhost:5000/client/logInClient',
     {
       headers: {
         Authorization: token
