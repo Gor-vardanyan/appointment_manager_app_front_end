@@ -1,0 +1,25 @@
+.profile_info{
+    display: flex;
+    border: 1px solid;
+    padding: 1em;
+}
+
+.profile_info > div{
+    width: 15vw;
+}
+
+.ProfileStructure{
+    margin: 4em;
+    display: flex;
+    border: 1px solid;
+    padding: 1em;
+    flex-direction: column;
+    align-items: center;
+}
+
+.history{
+    width: 50vw;
+}
+.space{
+    margin: 2em;
+}
