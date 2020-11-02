@@ -1,37 +1,42 @@
 import React from 'react';
 import "./Profile.scss";
-import Appointment from '../Appointment/Appointment'
 
-const ProfileInfo = ({user})=>{
-    return(
-        <div className="profile_info">
-        <div><b>Nombre:</b> {user.name}</div>
-        <div><b>Email:</b> {user.email}</div>
-        <div><b>Telefono:</b> {user.phone}</div>
-        <div><b>Documento:</b> {user.dni}</div>
-        </div>
-        )
-}
 
-const History = ({historic}) =>{    
-const historicArray = historic.map((Item) => { return(<div className={Item.status?'active':'done'}>{Item.date} - {Item.status?'Pending':'Finished'}</div>)
-});
-console.log(historicArray)
-    return historicArray;
-}
 
-const Profile = ({user}) =>{
-   // console.log('history');
-  // console.log(<History historic={user.historic}></History>);
+
+
+const Profile = (props) =>{
+   
+    console.log(props.user)
+   
+    const  History = ({historic}) =>{    
+        const historicArray = historic?.map((Item) => { return(<div className={Item.status?'active':'done'}>{Item.date} - {Item.status?'Pending':'Finished'}</div>)
+        });
+        console.log(historicArray)
+            return historicArray;
+        }
+    
+        const ProfileInfo = (props)=>{
+            return(
+                <div className="profile_info">
+                <div><b>Nombre:</b> {props.user.name}</div>
+                <div><b>Email:</b> {props.user.email}</div>
+                <div><b>Telefono:</b> {props.user.phone}</div>
+                <div><b>Documento:</b> {props.user.dni}</div>
+                </div>
+            )
+        }
+    
+    
+        
     return(
         <div className="ProfileStructure">
             <div className="space" >Profile</div>
-            <ProfileInfo user={user}></ProfileInfo>
+            <ProfileInfo user={props.user}></ProfileInfo>
             <div className="space">Create Appointment</div>
-            <Appointment></Appointment>
+            {props.children}
             <div className="space">Appointments historic</div>
-            <History historic={user.historic} className="history"></History>
-        
+            <History historic={props.user?.historic}></History>
         </div>
     );
 }

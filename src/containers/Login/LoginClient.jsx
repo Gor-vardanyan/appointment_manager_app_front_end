@@ -16,15 +16,16 @@ const Login = ({setUser}) => {
     }; 
     axios.post('http://localhost:5000/client/logInClient', user)
     .then(res => {
+      console.log(res)
        setUser(res.data.user) //seteo el user como estado del App.js
        localStorage.setItem('authToken', res.data.user.token);
        localStorage.setItem('user', JSON.stringify(res.data.user))
        notification.success({ message: 'Bienvenide', description: 'Bienvenide ' + user.email })
        setTimeout(() => {
-         history.push('/profile')
+        history.push('/profile')
        }, 1000);
     })
-    .catch(error => { alert("usuario no existe"); console.log(error);})
+    .catch(error => { alert("Bienvenide"); console.log(error);})
   };
  
 return (<form className="centered" onSubmit={handleSubmit} >

@@ -1,23 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Register.scss'; 
 import "antd/dist/antd.css";
 import { notification } from "antd";
 import { useHistory } from 'react-router-dom'
 import axios from 'axios';
 
-const Register = ({setNewUser}) => {
-    const history = useHistory();
+
+const Register = () => {
+    const [newUser,setNewUser] = useState({});
+
+    const history = useHistory({});
+    
     const handleSubmit = event => {
         event.preventDefault(); // para evitar refrescar la página
-        const newUser={
+        setNewUser({
             dni: event.target.dni.value,
-            name:event.target.name.value,
+            name: event.target.name.value,
             email: event.target.email.value,
             password: event.target.password.value,
-            phone:event.target.phone.value
-        };
+            phone: event.target.phone.value
+        });
         axios.post('http://localhost:5000/client/registerClients', newUser)
-        .then(res => {setNewUser(res.data)
+        .then(res => {
+            setNewUser(res.data);
             notification.success({ message: 'Account created succesfully, please use your email and password to login', description: 'Bienvenide ' + newUser.name })
             setTimeout(() => {
                 history.push('/client/logInClient')
