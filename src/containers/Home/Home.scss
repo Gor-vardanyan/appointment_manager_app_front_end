@@ -2,3 +2,31 @@
     display: flex;
     justify-content: center;
 }
+.boldtext{
+    font-weight: bold;
+    font-size: 10vh;
+}
+.mainimage{
+    width: 30vw;
+}
+.globalcontent{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    justify-content: space-between;
+    padding: 5vw;
+}
+
+.maintext{
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+}
+.services{
+    display: flex;
+    font-weight: bold;
+    font-size: 5vh;
+}
+.services > *{
+    margin: 1vw;
+}

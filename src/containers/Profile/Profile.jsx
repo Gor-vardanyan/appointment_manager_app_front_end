@@ -14,7 +14,7 @@ const ProfileInfo = ({user})=>{
 }
 
 const History = ({historic}) =>{    
-const historicArray = historic.map((Item) => { return(<div>{Item.date}</div>)
+const historicArray = historic.map((Item) => { return(<div className={Item.status?'active':'done'}>{Item.date} - {Item.status?'Pending':'Finished'}</div>)
 });
 console.log(historicArray)
     return historicArray;

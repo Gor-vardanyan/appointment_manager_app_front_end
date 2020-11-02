@@ -3,7 +3,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 1em;
+    margin: 2em;
+}
+.centered > label{
+    margin: 0.5em;
+}
+input{
+    margin: 0;
+    height: 2em;
+    margin-left: 4px;
+    border-style: solid;
+    border-width: thin;
+    border-radius: 3px;
 }
 .button{
     display: flex;

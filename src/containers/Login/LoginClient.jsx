@@ -27,7 +27,7 @@ const Login = ({setUser}) => {
     .catch(error => { alert("usuario no existe"); console.log(error);})
   };
  
-return (<form onSubmit={handleSubmit} >
+return (<form className="centered" onSubmit={handleSubmit} >
     <label>Email:<input name="email" type="email"/> </label>
     <label>Password:<input name="password" type="password"/></label>
   <input type="submit" value="Submit"/>
