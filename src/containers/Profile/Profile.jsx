@@ -29,7 +29,7 @@ const Profile = (props) =>{
         <div className="ProfileStructure">
             <div className="space" >Profile</div>
             <ProfileInfo user={props.user}></ProfileInfo>
-            {props.user.doctor
+            {props.user?.doctor
             ?<div>
                 {props.children}
             </div>

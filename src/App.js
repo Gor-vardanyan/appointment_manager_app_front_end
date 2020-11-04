@@ -23,8 +23,8 @@ const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
               <Route path='/' component={Home} exact />
               <Route path='/profile' exact >
                 <Profile user={user}>
-                  {user.doctor
-                  ?<Schedule user={user} setUser={setUser} />
+                  {user?.doctor
+                  ?<Schedule/>
                   :<Appointment user={user} setUser={setUser} />
                   }
                 </Profile>
