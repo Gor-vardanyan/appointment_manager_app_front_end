@@ -37,7 +37,9 @@ const Header =(props)=> {
                 <Link to ="/"className="home margin" >Home</Link>
                     {props.user ?
                         <div className="loggedIn">
-                            <Link to ="/profile" className="margin">Profile</Link>
+                            { !props.user.admin 
+                            ?<Link to ="/profile" className="margin">Profile</Link>
+                            :<Link to ="/administration" className="margin">Administration</Link>}
                             <Link to ="/" className="margin" onClick={logoutUser}>Logout</Link>
 
                         </div> :

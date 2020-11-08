@@ -1,17 +1,42 @@
 import React from 'react';
 import "./Profile.scss";
+import axios from 'axios';
+import {  notification } from "antd"; //import { Form,Input,Button,} from "antd";
+
 
 const Profile = (props) =>{
+
+    const CancelDate = (item)=>{ // call axios a la ruta /dates/removeDateClient
+        
+        const token = localStorage.getItem('authToken')
+        axios.post('http://localhost:5000/dates/removeDateClient',{
+        }, {
+            headers: { Authorization:'Basic '+ token }
+        }).then(res => {
+            if(res.data.user){
+                localStorage.setItem('user', JSON.stringify(res.data.user))
+                window.location.reload(true);
+            }else
+                notification.error({ message:'Error', description: res.data.message})
+            
+        })
+        .catch(error => {console.log(error)});
+    }
+
+    const Active = (item)=>{
+        return (<span>Pending <button type="submit" onClick={()=>{CancelDate(item)}} class="historic_cancel">Cancel</button></span>)
+    }
+
     const  History = ({historic}) =>{
         let  historicArray =[];
         historicArray = historic?.map((Item) => {
             return(<div className={Item.status?'active':'done'}>
                         {Item.date} - {Item.status ?
-                        'Pending'
+                        <Active item={Item}></Active>
                         :'Finished'}
                     </div>
             )})
-            return (<div>{historicArray}</div>);
+            return (<div>{historicArray.reverse()}</div>);
     }
     
     const ProfileInfo = (props)=>{

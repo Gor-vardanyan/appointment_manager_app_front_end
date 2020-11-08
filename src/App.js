@@ -8,10 +8,13 @@ import Home from './containers/Home/Home';
 import Login from './containers/Login/LoginClient';
 import Register from './containers/Register/Register';
 import Doctor from './containers/Doctor/Doctor';
+import Admin from './containers/Admin/Admin';
+
 //import axios from 'axios';
 import Profile from './containers/Profile/Profile'
 import Appointment from './containers/Appointment/Appointment'
 import Schedule from './containers/Schedule/Schedule'
+import Administration from './containers/Administration/Administration';
 
 function App() {
 const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
@@ -35,6 +38,12 @@ const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
               <Route path='/client/registerClients' component={Register} exact />
               <Route path='/doctor' exact >
                 <Doctor setUser={setUser} ></Doctor>
+              </Route>
+              <Route path='/admin' exact >
+                <Admin setUser={setUser} ></Admin>
+              </Route>
+              <Route path='/administration' exact>
+                <Administration></Administration>
               </Route>
             </Switch>
       </BrowserRouter>

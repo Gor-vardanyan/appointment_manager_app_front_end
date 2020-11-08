@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import "antd/dist/antd.css";
 import {  DatePicker, Space } from "antd"; //import { Form,Input,Button,} from "antd";
 import axios from 'axios';
+import {  notification } from "antd"; //import { Form,Input,Button,} from "antd";
+
 
 const Appointment =({user,setUser})=>{
     let date = null;
@@ -27,7 +29,12 @@ const Appointment =({user,setUser})=>{
             headers: { Authorization:'Basic '+ token }
         }).then(res => {
             // console log temporal
-            console.log(res.data)
+            if(res.data.user){
+                localStorage.setItem('user', JSON.stringify(res.data.user))
+                window.location.reload(true);
+            }else
+                notification.error({ message:'Error', description: res.data.message})
+            
         })
         .catch(error => {console.log(error)});
     }
