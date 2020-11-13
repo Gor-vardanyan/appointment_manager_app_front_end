@@ -14,7 +14,7 @@ const Login = ({setUser}) => {
       password: event.target.password.value
     }; 
     console.log(user)
-    axios.post('https://heroku-apointment-manager-app.herokuapp.com/client/logInClient', user)
+    axios.post('https://heroku-apointment-manager-app.herokuapp.com/client/logInClient', JSON.stringify(user))
     .then(res => {
       console.log(res)
        setUser(res.data.user) //seteo el user como estado del App.js
