@@ -14,7 +14,7 @@ const Login = ({setUser}) => {
       email: event.target.email.value,
       password: event.target.password.value
     }; 
-    axios.post(process.env.APP_URL+'/admin/logInAdmin', admin)
+    axios.post('https://heroku-apointment-manager-app.herokuapp.com/admin/logInAdmin', admin)
     .then(res => {
         res.data.admin.admin = true;
         setUser(res.data.admin) //seteo el user como estado del App.js

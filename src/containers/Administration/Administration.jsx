@@ -1,7 +1,7 @@
 import React,{ useState , useEffect} from 'react'
 import axios from 'axios';
 import './Administration.scss'
-import {  notification } from "antd"; //import { Form,Input,Button,} from "antd";
+ //import { Form,Input,Button,} from "antd";
 
 
 const Administration = ()=>{
@@ -18,7 +18,7 @@ const Administration = ()=>{
             phone: event.target.phone.value
         };
         const token = localStorage.getItem('authToken')
-        axios.post(process.env.APP_URL+'/doctor/registerDoctor',newDoctor, {
+        axios.post('https://heroku-apointment-manager-app.herokuapp.com/doctor/registerDoctor',newDoctor, {
             headers: { Authorization:'Basic '+ token }
         })
         .then(res => {
@@ -31,7 +31,7 @@ const Administration = ()=>{
 
     useEffect(() => {
         const token = localStorage.getItem('authToken')
-        axios.post('http://localhost:5000/doctor/showAll',{}, {
+        axios.post('https://heroku-apointment-manager-app.herokuapp.com/doctor/showAll',{}, {
             headers: { Authorization:'Basic '+ token }
         }).then(res => {
             setIsLoaded(true);

@@ -20,7 +20,7 @@ const Register = () => {
             password: event.target.password.value,
             phone: event.target.phone.value
         });
-        axios.post(process.env.APP_URL+'/client/registerClients', newUser)
+        axios.post('https://heroku-apointment-manager-app.herokuapp.com/client/registerClients', newUser)
         .then(res => {
             setNewUser(res.data);
             notification.success({ message: 'Account created succesfully, please use your email and password to login', description: 'Bienvenide ' + newUser.name })
@@ -28,7 +28,7 @@ const Register = () => {
                 history.push('/client/logInClient')
             }, 1000);
         })
-        .catch(error => { alert("user already exists"); console.log(error);})
+        .catch(error => { alert("user already exists"); console.log(process.env);})
     };
 
     return (

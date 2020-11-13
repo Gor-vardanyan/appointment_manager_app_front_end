@@ -22,7 +22,7 @@ const Appointment =({user,setUser})=>{
             return alert('Rellene los campos');
         }
         const token = localStorage.getItem('authToken')
-        axios.post(process.env.APP_URL+'/dates/createDate',{
+        axios.post('https://heroku-apointment-manager-app.herokuapp.com/dates/createDate',{
             name: event.target.doctor.value,   
             date
         }, {

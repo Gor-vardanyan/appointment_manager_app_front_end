@@ -5,7 +5,6 @@ import {  notification } from "antd"; //import { Form,Input,Button,} from "antd"
 import { useHistory } from 'react-router-dom'
 import axios from 'axios';
 
-
 const Login = ({setUser}) => {
   const history = useHistory();
   const handleSubmit = event => {
@@ -14,7 +13,8 @@ const Login = ({setUser}) => {
       email: event.target.email.value,
       password: event.target.password.value
     }; 
-    axios.post(process.env.APP_URL+'/client/logInClient', user)
+    console.log(user)
+    axios.post('https://heroku-apointment-manager-app.herokuapp.com/client/logInClient', user)
     .then(res => {
       console.log(res)
        setUser(res.data.user) //seteo el user como estado del App.js
@@ -25,7 +25,7 @@ const Login = ({setUser}) => {
         history.push('/profile')
        }, 1000);
     })
-    .catch(error => { alert("Bienvenide"); console.log(error);})
+    .catch(error => { alert("failed"); console.log(error);})
   };
  
 return (<form className="centered" onSubmit={handleSubmit} >
