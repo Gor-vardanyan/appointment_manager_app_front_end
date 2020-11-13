@@ -18,7 +18,7 @@ const Administration = ()=>{
             phone: event.target.phone.value
         };
         const token = localStorage.getItem('authToken')
-        axios.post('https://heroku-apointment-manager-app.herokuapp.com/doctor/registerDoctor',newDoctor, {
+        axios.post('https://heroku-apointment-manager-app.herokuapp.com/doctor/registerDoctor', JSON.stringify(newDoctor) , {
             headers: { Authorization:'Basic '+ token }
         })
         .then(res => {
