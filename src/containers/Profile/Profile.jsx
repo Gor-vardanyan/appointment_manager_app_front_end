@@ -9,7 +9,7 @@ const Profile = (props) =>{
     const CancelDate = (item)=>{ // call axios a la ruta /dates/removeDateClient
         
         const token = localStorage.getItem('authToken')
-        axios.post('http://localhost:5000/dates/removeDateClient',{
+        axios.post(process.env.APP_URL+'/dates/removeDateClient',{
         }, {
             headers: { Authorization:'Basic '+ token }
         }).then(res => {

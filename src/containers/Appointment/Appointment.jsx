@@ -22,7 +22,7 @@ const Appointment =({user,setUser})=>{
             return alert('Rellene los campos');
         }
         const token = localStorage.getItem('authToken')
-        axios.post('http://localhost:5000/dates/createDate',{
+        axios.post(process.env.APP_URL+'/dates/createDate',{
             name: event.target.doctor.value,   
             date
         }, {

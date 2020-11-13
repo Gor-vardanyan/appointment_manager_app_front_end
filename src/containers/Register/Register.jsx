@@ -20,7 +20,7 @@ const Register = () => {
             password: event.target.password.value,
             phone: event.target.phone.value
         });
-        axios.post('http://localhost:5000/client/registerClients', newUser)
+        axios.post(process.env.APP_URL+'/client/registerClients', newUser)
         .then(res => {
             setNewUser(res.data);
             notification.success({ message: 'Account created succesfully, please use your email and password to login', description: 'Bienvenide ' + newUser.name })

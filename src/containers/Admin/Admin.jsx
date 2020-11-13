@@ -14,7 +14,7 @@ const Login = ({setUser}) => {
       email: event.target.email.value,
       password: event.target.password.value
     }; 
-    axios.post('http://localhost:5000/admin/logInAdmin', admin)
+    axios.post(process.env.APP_URL+'/admin/logInAdmin', admin)
     .then(res => {
         res.data.admin.admin = true;
         setUser(res.data.admin) //seteo el user como estado del App.js

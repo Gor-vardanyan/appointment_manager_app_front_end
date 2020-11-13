@@ -18,7 +18,7 @@ const Administration = ()=>{
             phone: event.target.phone.value
         };
         const token = localStorage.getItem('authToken')
-        axios.post('http://localhost:5000/doctor/registerDoctor',newDoctor, {
+        axios.post(process.env.APP_URL+'/doctor/registerDoctor',newDoctor, {
             headers: { Authorization:'Basic '+ token }
         })
         .then(res => {

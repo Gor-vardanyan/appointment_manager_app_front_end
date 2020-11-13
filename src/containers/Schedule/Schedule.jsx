@@ -5,7 +5,7 @@ const Schedule =() =>{
     const [dates, setDates] = useState([])
     useEffect(() => {
         const token = localStorage.getItem('authToken')
-        axios.post('http://localhost:5000/doctor/dates',{}, {
+        axios.post(process.env.APP_URL+'/doctor/dates',{}, {
             headers: { Authorization:'Basic '+ token }
         }).then(res => {
             setDates(res.data)
