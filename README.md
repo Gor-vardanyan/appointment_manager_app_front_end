@@ -11,6 +11,7 @@ login with admin to see all doctors and register new doctors
 ### This project is deployed in Heroku :
 Through the main page you can only login with the client
 to login with doctor or admin you have to add to the url "/docotor" or "/admin" to have acces to it's login
+the first loading of the page usualy takes long because the region of the server is in the US, if it fails just reload the page.
 
 for admin view:
 user: admin@gmail.com 
